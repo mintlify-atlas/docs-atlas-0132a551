@@ -1,0 +1,125 @@
+---
+title: "Version 3.0.0: The Neo-fares Update"
+description: "Official NeoForge support, data-driven trellises, Shulker Tiffins, a new NexusLib dependency, and sweeping balance changes across food and blocks."
+---
+
+Version 3.0.0, titled The Neo-fares Update, is the largest release of Bountiful Fares to date. It introduces an official NeoForge port alongside the existing Fabric version, makes trellises fully data-driven block entities that can be extended through datapacks, adds NexusLib as a required dependency, and introduces Shulker Tiffins — a portable food storage item. The update also brings a wave of texture improvements, comparator support for several blocks, balance changes to effects and foods, and a significant set of new advancements.
+
+<Warning>
+  **Upgrading from a version before 3.0.0 will break certain things in your world.**
+
+  - **Trellises** — Trellis blocks with plants on them may disappear. Break any plants on your trellises before updating.
+  - **Tea Blends** — Tea Blend items have been removed. Their functionality has moved to the raw ingredients they were made from.
+  - **Custard** — Custard items have been removed entirely.
+
+  This is expected to be the only release with breaking changes of this nature.
+</Warning>
+
+## Fixes
+
+- Added Bountiful Fares stairs, slabs, and walls to their respective vanilla block and item tags
+- Added missing stonecutting recipes for checkered ceramic mosaic
+- Fixed an issue where putting undyed ceramic blocks into a stonecutter after dyed ones would render recipes with the previous dyed color
+- Chamomile Flowers now drop extra flowers as items when bonemealed on farmland, instead of cycling back to one flower
+- Fixed Coconut Cakes not being stackable to 16
+- Fixed Sponge Cakes having an incorrect loot table
+- Fixed an issue where a Gristmill inventory screen would persist after its block was removed
+- Pumpkin Pie can no longer be eaten off a Ceramic Dish when "Placeable Pumpkin Pie" is enabled in config
+- Wind Charges and Splash/Lingering Water Bottles now properly extinguish Infused and Coconut Candles
+- Fixed block particles from fruit logs and Grassy Dirt being incorrectly tinted
+
+## Compatibility
+
+- Added a separate creative tab for compatibility content
+- Cake eating sounds now play when eating unique mod cakes, including Amendments' Double Cake and directional Cake
+- Re-implemented Amendments cauldron fluids for Bountiful Fares items
+- Updated compatibility with Farmer's Delight:
+  - Maize can now be planted on Rich Soil Farmland
+  - Chamomile and other tea flowers can now be bonemealed on and by Rich Soil Farmland
+  - Tomatoes can now be planted on Trellises
+- Added compatibility with Appleskin:
+  - Food values of items inside Shulker Tiffins are now correctly displayed
+- Added compatibility with No Man's Land (NeoForge):
+  - Added Pine, Maple, Walnut, and Willow trellises and pickets
+  - Added Candied Pears
+  - Added Maple Mead Bottles, made by fermenting Maple Syrup Bottles — removes Hunger, Weakness, and Slowness
+- Added compatibility with Frontiers (Fabric):
+  - Added trellis plants for Ancient and Violet Rose Bushes
+  - Added Eboncork trellises and pickets
+
+## Tweaks
+
+- Added ceramic building blocks to the colored blocks creative tab
+- Updated `ru_ru` translations
+- Nerfed the Enrichment effect — now gives a flat +1 extra attack damage, regardless of level
+- Removed Tea Blends — their functionality has moved to the items they were made from
+- The blocks on which hanging fruit can attach are now determined by their respective leaves tag
+- Added comparator interactivity for several blocks:
+  - Gristmills output a signal based on their combined inventory, similar to Furnaces
+  - Ceramic Dishes: outputs 0 when empty, 1 for an inedible item, and 1–15 based on nutrition for an edible item
+  - Trellises: outputs 1–15 based on crop growth stage, always 15 for flowers and plants, 0 when empty
+  - Fermentation Vessels output 1–15 based on fermenting time, maxing out at 15 when complete
+- Changed how Ceramic Dishes drop food item remainders
+- Grassy Dirt can now be converted into Dirt Paths and Farmland
+- Tweaked some advancement descriptions
+- Renamed Jars to Cups
+- Tea Bottles renamed to Tea Cups — now use Water Cups to create
+- Cups now stack to 64
+- Blue dye can now be crafted from Lapisberries
+- Retextured Leeks, Leek Stew, and Sea Salad
+- Retextured Passion Fruit
+- Retextured Elderberries
+- Retextured Lapisberries and related blocks
+- Tweaked the texture of Wild Wheat
+- Golden Apples on trees no longer break instantly to prevent accidental loss
+- Changed the rarity of Golden Apple Saplings to epic
+- Golden Apple Saplings and their potted versions now emit quiet ambient sounds to help players notice them
+- Renamed a few advancements
+- Walnut trees now generate with fewer walnuts to reduce littering
+- Updated `fr_fr` and `fr_ca` translations
+- Added new splash texts
+
+## New features
+
+- Created an official NeoForge version
+- Added Feldspar Brick Walls
+- Dyeable ceramic blocks now display as the closest available map color when viewed on a map
+- Added Solid Ceramic — a command-only block that acts like other dyeable ceramics but with a solid white texture; using a Glow Ink Sac on it causes it to glow as a true solid color
+- Added Cooked Eggs — crafted by cooking an Egg
+- Added Pickled Beetroots — made by fermenting a Beetroot
+- Added Foul Flesh — made by fermenting Rotten Flesh; gives the Hunger effect and removes 2 hunger shanks when eaten
+- Using a dyed Artisan Brush on an Armor Stand with leather armor in a slot will dye that piece
+- Right-clicking an Artisan Brush over a stack of dyeable items (leather armor, wolf armor, ceramic blocks) in an inventory will dye the whole stack
+- Added Flour Blocks — affected by gravity; create flour particles when broken, destroyed, exploded, or struck by a Wind Charge
+- Added Coir Bed (thanks to Artyrian) — crafted from 3 Coconut Coir and 3 planks; will not set the player's spawn point when slept in
+- Trellises are now data-driven block entities:
+  - `data/[pack-id]/bountifulfares/trellis_plant` JSON files define decorative trellis plants, including the planting item, texture, model (`default` or `inverted`), and whether Bone Meal can duplicate them
+  - `data/[pack-id]/bountifulfares/trellis_crop` JSON files define trellis crops, including the seed, result, texture, model, growth stages, growth chance, and produce amount; each stage texture gains the suffix `_[stage]`
+  - See the `example_trellis_plants` datapack in the GitHub repository for reference
+- Grass Seeds interactions are now data-driven:
+  - `data/[pack-id]/bountifulfares/grass_seeds_interaction` JSON files define interactions including the target soil, what it converts to, and whether the result plants on top
+- Spongekin Sprouts now generate on the floor of sponge rooms in Ocean Monuments as originally intended; they drop Spongekin Seeds unless broken with Shears or Silk Touch; Guardians no longer drop Spongekin Seeds
+- Added Shulker Tiffins:
+  - Crafted with 2 Shulker Shells and a Bowl; dyeable all 16 colors
+  - Holds up to 64 of any food item, regardless of its normal stack size
+  - If a food with a container is placed inside, its container is left behind; a stack of the container is needed to retrieve it
+  - Food inside can be eaten directly by interacting with the Tiffin
+  - Any crafting recipe for a food, with its container replaced by a Tiffin, crafts the food directly into it; recipes for foods without containers also work
+  - New config options: render the food in the corner of the slot, or render the food as the held item instead of the Tiffin
+- Added new advancements:
+  - **Green Thumb** — Pick a ripe fruit from a fruit tree
+  - **Exotic!** — Obtain every type of fruit from fruit trees
+  - **Trellising it** — Plant a vine crop or decorative plant on a Trellis
+  - **Stop and Smell the Flours** — Mill grains into Flour
+  - **Poof!** — Throw flour at your feet to make a quick escape
+  - **It's Tofu!!!** — Craft Ceramic Clay from Feldspar and Clay Balls
+  - **An Acquired Taste** — Eat every food that isn't exactly good for you
+  - **Money Does Grow On Trees!** — Find a Golden Apple Sapling hidden in a Woodland Mansion
+  - **Golden Thumb** — Cultivate a Golden Apple Tree in a dark environment and pick one of its fruit
+  - **Maribiogeological** — Grow a Spongekin from a Sea Lantern to propagate its crystals
+  - **I'm Something of an Artist** — Obtain an Artisan Brush
+  - **Roy G Biv** — Dye a ceramic block any color
+  - **High Fashion** — Dye a piece of leather armor on an Armor Stand using an Artisan Brush
+  - **This Can't be Good for You** — Acidify an effect enough to increase its amplifier by 2
+  - **Chef's Bundle** — Craft a Shulker Tiffin
+  - **Meal Prepping** — Completely fill a Shulker Tiffin with food

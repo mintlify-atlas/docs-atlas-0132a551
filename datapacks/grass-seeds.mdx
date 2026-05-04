@@ -1,0 +1,84 @@
+---
+title: "Grass seeds interactions via datapacks"
+description: "Define which soil blocks the Grass Seeds item can target and what block gets placed, including block-replacement and on-top planting behaviors."
+---
+
+The Grass Seeds item lets players plant short grass or convert soil blocks by right-clicking them. Each interaction — which soil block to target, what gets placed, and where it gets placed — is defined by a JSON file. You can extend this system with a datapack to add new soil targets or new plant results without any code changes.
+
+## What Grass Seeds do
+
+When a player right-clicks a soil block with Grass Seeds, the game looks for a matching `grass_seeds_interaction` entry for that block. If a match is found, one of two things happens:
+
+- **`on_top: true`** — A new block is placed on top of the soil block, like Short Grass growing on top of a Grass Block.
+- **`on_top: false`** — The soil block itself is replaced by the result block, like Dirt being converted into a Grass Block.
+
+All vanilla Bountiful Fares interactions — including planting on Grass Block, Dirt, Coarse Dirt, Mycelium, Podzol, and Rooted Dirt — are defined using these same JSON files.
+
+## File location
+
+```
+data/<pack-id>/bountifulfares/grass_seeds_interaction/<name>.json
+```
+
+Each JSON file in this directory registers one interaction. The file name becomes the entry's ID within your pack namespace.
+
+## Schema
+
+<ParamField path="soil" type="string" required>
+  The block ID of the soil block that triggers this interaction when right-clicked with Grass Seeds, e.g. `"minecraft:grass_block"`. Only one interaction per soil block is supported.
+</ParamField>
+
+<ParamField path="result" type="string" required>
+  The block ID of the block to place when this interaction fires, e.g. `"minecraft:short_grass"`. This is either placed on top of the soil block or replaces it, depending on `on_top`.
+</ParamField>
+
+<ParamField path="on_top" type="boolean" required>
+  Controls where the result block is placed.
+
+  - `true` — places the result block in the air block directly above the soil, leaving the soil block unchanged. Use this for plants like Short Grass.
+  - `false` — replaces the soil block with the result block. Use this for soil conversions like Dirt → Grass Block.
+</ParamField>
+
+## Examples
+
+The built-in Bountiful Fares interactions cover all six vanilla soil types. Here are representative examples of both placement modes:
+
+<CodeGroup>
+
+```json short_grass_on_grass_block.json
+{
+  "soil": "minecraft:grass_block",
+  "result": "minecraft:short_grass",
+  "on_top": true
+}
+```
+
+```json dirt_to_grass_block.json
+{
+  "soil": "minecraft:dirt",
+  "result": "minecraft:grass_block",
+  "on_top": false
+}
+```
+
+```json coarse_dirt_to_grass_block.json
+{
+  "soil": "minecraft:coarse_dirt",
+  "result": "minecraft:grass_block",
+  "on_top": false
+}
+```
+
+```json mycelium_to_grass_block.json
+{
+  "soil": "minecraft:mycelium",
+  "result": "minecraft:grass_block",
+  "on_top": false
+}
+```
+
+</CodeGroup>
+
+<Note>
+  All six vanilla interactions shipped with Bountiful Fares — including Dirt, Coarse Dirt, Mycelium, Podzol, Rooted Dirt, and Short Grass on Grass Block — are defined in this same format. Your datapack entries sit alongside them and follow the exact same rules.
+</Note>

@@ -1,0 +1,178 @@
+---
+title: 'Food items: meals, snacks, and ingredients'
+description: 'Explore every food item in Bountiful Fares — fruits, vegetables, bowl meals, pastries, fermented drinks, candies, and the portable Shulker Tiffin.'
+---
+
+Bountiful Fares expands Minecraft's food system with dozens of new items spread across fruits, crops, prepared meals, baked goods, bottled drinks, and fermented products. Most items carry nutrition and saturation values tuned to reward thoughtful foraging and cooking, and several grant custom mob effects that give lasting combat and exploration benefits.
+
+## Items by category
+
+<Tabs>
+  <Tab title="Fruits">
+    Fruits are harvested from trees and plants found throughout the world. Several are fast-eating snacks; others are primarily crafting ingredients for compotes, ciders, and candies.
+
+    | Item | Nutrition | Saturation | Notes |
+    |---|---|---|---|
+    | Passion Fruit | 2 | 0.1 | Fast eat |
+    | Elderberries | 2 | 0.1 | Fast eat; 30% chance of Instant Health I |
+    | Lapisberries | 3 | 0.1 | Fast eat |
+    | Orange | 4 | 0.3 | |
+    | Lemon | 4 | 0.3 | |
+    | Plum | 4 | 0.3 | |
+    | Hoary Apple | 4 | 0.6 | Higher saturation than a regular apple |
+    | Coconut Half | 4 | 0.1 | Cracked open from a Coconut |
+    | Coconut Milk Bottle | 3 | 1.0 | Returns a Glass Bottle when consumed |
+    | Walnut | 1 | 0.0 | Fast eat; mainly a crafting ingredient |
+    | Candied Orange | 2 | 0.2 | Fast eat |
+    | Candied Lemon | 2 | 0.2 | Fast eat |
+  </Tab>
+
+  <Tab title="Vegetables & Grains">
+    Crops grown on farmland or found while exploring. Flour is milled from grain items using a Gristmill and is used as a crafting base for many baked goods.
+
+    | Item | Nutrition | Saturation | Notes |
+    |---|---|---|---|
+    | Leek | 3 | 0.6 | Grown from Leek Seeds |
+    | Maize | 3 | 0.6 | Grown from Maize Seeds |
+    | Popped Maize | 3 | 0.5 | Fast eat; cook Maize Seeds |
+    | Cooked Egg | 4 | 1.0 | Fast eat; cook a Chicken Egg |
+    | Pickled Beetroot | 5 | 0.8 | Fast eat; produced by fermenting a Beetroot |
+    | Flour | — | — | Milled ingredient; not directly edible |
+    | Spongekin Slice | 2 | 0.3 | Always edible; extends air time underwater |
+    | Pickled Spongekin | 5 | 0.8 | Always edible; fast eat; extends air time underwater |
+  </Tab>
+
+  <Tab title="Meals (bowls)">
+    Bowl meals are the highest-tier food category. Each yields a Bowl when consumed and stacks to 16, making them efficient to carry in bulk. Most grant a custom effect — either Enrichment or Restoration — on eating.
+
+    | Item | Nutrition | Saturation | Effect |
+    |---|---|---|---|
+    | Bountiful Stew | 10 | 0.6 | Enrichment I + Restoration I (2400 ticks / 2 min) |
+    | Apple Stew | 10 | 0.5 | Restoration I (1800 ticks / 1.5 min) |
+    | Coconut Stew | 10 | 0.6 | Restoration I (1800 ticks / 1.5 min) |
+    | Fish Stew | 10 | 0.6 | Restoration I (1800 ticks / 1.5 min) |
+    | Leek Stew | 6 | 0.6 | Enrichment I (1800 ticks / 1.5 min) |
+    | Stone Stew | 5 | 0.4 | None |
+    | Sea Salad | 6 | 0.5 | None |
+    | Passion Glazed Salmon | 8 | 0.7 | Enrichment I (2400 ticks / 2 min) |
+    | Coconut Crusted Cod | 8 | 0.7 | Enrichment I (2400 ticks / 2 min) |
+    | Crusted Beef | 10 | 0.7 | Enrichment I (2400 ticks / 2 min) |
+    | Crimson Chow | 10 | 0.8 | None |
+    | Warped Chow | 8 | 0.7 | None |
+
+    <Note>
+      Bowl meals use `usingConvertsTo(Items.BOWL)`, so a Bowl is returned to your inventory each time you eat one, not just on crafting.
+    </Note>
+  </Tab>
+
+  <Tab title="Medleys">
+    Medleys are stackable (to 16) food bundles themed around biomes. All grant Enrichment I for 1200 ticks (60 seconds). Because they stack, medleys are ideal for quickly refreshing Enrichment between fights.
+
+    | Item | Nutrition | Saturation |
+    |---|---|---|
+    | Forest Medley | 10 | 0.6 |
+    | Arid Medley | 9 | 0.5 |
+    | Meadow Medley | 9 | 0.5 |
+    | Mire Medley | 8 | 0.6 |
+    | Coastal Medley | 8 | 0.6 |
+    | Tropical Medley | 8 | 0.6 |
+
+    Coastal Medley additionally extends underwater breathing time, similar to Pickled Spongekin.
+  </Tab>
+
+  <Tab title="Pastries & baked">
+    Baked items cover bread, pies, cookies, stuffed potatoes, and the placeable Artisan Cookie.
+
+    | Item | Nutrition | Saturation | Notes |
+    |---|---|---|---|
+    | Maize Bread | 5 | 0.5 | Standard bread replacement |
+    | Walnut Cookie | 2 | 0.1 | Small snack |
+    | Candied Apple | 6 | 0.5 | Crafted treat |
+    | Candied Plum | 6 | 0.5 | Crafted treat |
+    | Stuffed Hoary Apple | 8 | 0.5 | Crafted treat |
+    | Mushroom Stuffed Potato | 8 | 0.6 | Enrichment I (1800 ticks) |
+    | Berry Stuffed Potato | 7 | 0.5 | Enrichment I (1200 ticks) |
+    | Maize Stuffed Potato | 7 | 0.6 | Enrichment I (1200 ticks) |
+    | Artisan Cookie | — | — | Placeable block; eaten like a cake slice |
+
+    Pies (Orange Pie, Plum Pie, Melon Pie, Passion Fruit Tart, Sweet Berry Tart) and cakes (Sponge Cake, Coconut Cake) are also craftable and behave like Vanilla cake-type blocks.
+  </Tab>
+
+  <Tab title="Drinks & bottles">
+    Drinks return a Cup or Glass Bottle when consumed. All tea cups stack to 16 and are always edible, granting Ebullience I for 6000 ticks (5 minutes).
+
+    | Item | Nutrition | Saturation | Effect | Container |
+    |---|---|---|---|---|
+    | Green Tea Cup | 4 | 1.0 | Ebullience I (6000 ticks) | Cup |
+    | Black Tea Cup | 4 | 1.0 | Ebullience I (6000 ticks) | Cup |
+    | Chamomile Tea Cup | 4 | 1.0 | Ebullience I (6000 ticks) | Cup |
+    | Honeysuckle Tea Cup | 4 | 1.0 | Ebullience I (6000 ticks) | Cup |
+    | Bellflower Tea Cup | 4 | 1.0 | Ebullience I (6000 ticks) | Cup |
+    | Torchflower Tea Cup | 4 | 1.0 | Ebullience I (6000 ticks) | Cup |
+    | Apple Cider Jar | 6 | 0.6 | None | Cup |
+    | Plum Cider Jar | 6 | 0.6 | None | Cup |
+    | Hoary Cider Jar | 6 | 0.6 | None | Cup |
+    | Apple Compote Jar | 6 | 0.4 | Enrichment I (1200 ticks) | Cup |
+    | Orange Compote Jar | 6 | 0.4 | Enrichment I (1200 ticks) | Cup |
+    | Lemon Compote Jar | 6 | 0.4 | Enrichment I (1200 ticks) | Cup |
+    | Plum Compote Jar | 6 | 0.4 | Enrichment I (1200 ticks) | Cup |
+    | Hoary Compote Jar | 6 | 0.4 | Enrichment I (1200 ticks) | Cup |
+
+    <Note>
+      Compote jars and cider jars stack to 16. Cups stack to 64. A Cup is returned to your inventory each time you drink from a jar or tea cup.
+    </Note>
+  </Tab>
+
+  <Tab title="Fermented">
+    Fermented foods are produced in the Fermentation Vessel. See the [Fermentation](/food/fermentation) page for full recipes.
+
+    | Item | Nutrition | Saturation | Effect | Notes |
+    |---|---|---|---|---|
+    | Mead Bottle | 5 | 0.4 | Regeneration I (200 ticks); 30% Nausea (600 ticks) | Always edible; stacks to 16; returns Glass Bottle |
+    | Elderberry Wine Bottle | 4 | 0.2 | Instant Health II; 30% Nausea (600 ticks) | Always edible; stacks to 16; returns Glass Bottle |
+    | Lapisberry Wine Bottle | 5 | 0.4 | Night Vision (600 ticks); 30% Nausea (600 ticks) | Always edible; stacks to 16; returns Glass Bottle |
+    | Foul Flesh | 0 | 0.0 | Hunger I (300 ticks) | Always edible; removes 2 hunger shanks |
+    | Pickled Spongekin | 5 | 0.8 | — | Always edible; extends air time underwater |
+    | Pickled Beetroot | 5 | 0.8 | — | Fast eat |
+    | Coconut Milk Bottle | 3 | 1.0 | — | Returns Glass Bottle |
+    | Citrus Essence | 1 | 0.1 | Acidic I (300 ticks) | Always edible; fast eat |
+  </Tab>
+
+  <Tab title="Candies">
+    Candies are fast-eating snacks with unique on-eat effects beyond simple nutrition.
+
+    | Item | Nutrition | Saturation | Special |
+    |---|---|---|---|
+    | Candy | 5 | 0.4 | Clears Poison on eat |
+    | Sour Candy | 4 | 0.3 | 20% chance of Acidic I (200 ticks) |
+    | Piquant Candy | 4 | 0.3 | No special effect |
+    | Bitter Candy | 4 | 0.3 | 75% chance of Instant Health I |
+    | Strange Candy | 4 | 0.3 | Night Vision I (20 ticks, ~1 second flash) |
+  </Tab>
+</Tabs>
+
+## The Shulker Tiffin
+
+The Shulker Tiffin is a portable food container that lets you carry large quantities of a single food item without worrying about stack-size limits.
+
+<AccordionGroup>
+  <Accordion title="Crafting">
+    Craft a Shulker Tiffin with **2 Shulker Shells** and a **Bowl** in a crafting table. Tiffins can be dyed any of the 16 dye colors using an Artisan Brush or by replacing the Bowl with a dye in the recipe.
+  </Accordion>
+
+  <Accordion title="Storing food">
+    Right-click a Tiffin with a food item to fill it. A single Tiffin holds up to **64 of any one food item**, regardless of that item's normal stack size. Foods with container items (like bowl meals or bottled drinks) will leave their container behind in the Tiffin as you eat, and you need a stack of that container in your inventory to retrieve the food.
+  </Accordion>
+
+  <Accordion title="Eating from the Tiffin">
+    You can eat food directly from the Tiffin by right-clicking while holding it — no need to take items out first. Any crafting recipe that uses a food's container can substitute a Tiffin in that slot, crafting the item directly into the Tiffin.
+  </Accordion>
+
+  <Accordion title="Compatibility">
+    The Appleskin mod will correctly display food values for items stored inside a Tiffin when hovering over it.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Fill a Tiffin with Mead Bottles or compote jars before heading into a dungeon — you can eat directly from it and it holds far more than a normal inventory slot allows.
+</Tip>

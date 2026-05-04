@@ -1,0 +1,133 @@
+---
+title: "World generation: new biome features and structures"
+description: "Bountiful Fares populates the overworld with fruit trees, wild crops, Grassy Dirt patches, and rare hidden saplings across many vanilla biomes."
+---
+
+Bountiful Fares adds a variety of naturally generating features to the overworld — fruit trees, wild crop patches, decorative ground cover, and a handful of rarer structures hidden in existing generation. All features are registered as configured and placed features under `data/bountifulfares/worldgen/` and are applied to biomes through biome tags, making them fully compatible with datapack overrides.
+
+## Fruit trees
+
+Each fruit tree type generates in specific biomes determined by its `has_[type]_trees` biome tag. All fruit trees use custom trunk placers and foliage providers defined in the mod's configured feature files.
+
+<CardGroup cols={2}>
+  <Card title="Apple Trees">
+    Generate in `minecraft:forest`. Fruit hangs from leaves as `HangingApple` blocks at various age stages.
+  </Card>
+  <Card title="Plum Trees">
+    Generate in `minecraft:meadow` and `minecraft:flower_forest`. The flower forest variant uses a separate placed feature (`plum_flower_forest_placed`).
+  </Card>
+  <Card title="Orange Trees">
+    Generate in `minecraft:jungle` and `minecraft:sparse_jungle`.
+  </Card>
+  <Card title="Lemon Trees">
+    Generate in `#minecraft:is_river` biomes (all river variants).
+  </Card>
+  <Card title="Walnut Trees">
+    Generate in `minecraft:windswept_forest` and `minecraft:wooded_badlands`. Since 3.0.0, Walnut trees generate with fewer Walnuts on them to reduce ground litter.
+  </Card>
+  <Card title="Palm Trees">
+    Generate in `minecraft:beach` and `minecraft:desert`. Palm trees produce **Palm Crown** and **Palm Frond** blocks. Bone Mealing a Palm Crown's side face grows a Coconut there; using Bone Meal on the top or bottom face attempts to grow Coconuts in all four cardinal directions.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Picking a ripe fruit from any fruit tree for the first time unlocks the **"Green Thumb"** advancement. Obtaining every type of fruit from fruit trees unlocks **"Exotic!"**
+</Tip>
+
+## Wild crops
+
+Wild crop variants generate as `BushBlock`-based plants across the overworld. They can be harvested like normal crops.
+
+| Feature | Biomes |
+|---|---|
+| Wild Wheat | `minecraft:plains`, `minecraft:forest`, `#minecraft:is_savanna` |
+| Wild Maize | `minecraft:mangrove_swamp` |
+| Wild Passion Fruit | `minecraft:jungle`, `minecraft:sparse_jungle`, `minecraft:bamboo_jungle` |
+| Wild Elderberries | `minecraft:swamp`, `minecraft:dark_forest` |
+| Wild Carrots | See `has_wild_carrots` biome tag |
+| Wild Potatoes | See `has_wild_potatoes` biome tag |
+| Wild Leeks | See `has_wild_leeks` biome tag |
+| Wild Beetroots | See `has_wild_beetroot` biome tag |
+
+Each wild crop also has a `large_wild_[crop]` configured feature for denser patches, placed via a separate `large_wild_[crop]_placed` entry. Large variants use the same biome tags with corresponding `has_large_wild_[crop]` tags.
+
+## Flowers and shrubs
+
+<CardGroup cols={2}>
+  <Card title="Chamomile">
+    Generates in `minecraft:plains`, `minecraft:birch_forest`, `minecraft:old_growth_birch_forest`, `minecraft:windswept_forest`, `minecraft:windswept_hills`, and `minecraft:flower_forest`.
+  </Card>
+  <Card title="Honeysuckle">
+    Generates in `minecraft:forest`, `minecraft:dark_forest`, `#minecraft:is_savanna`, and `minecraft:flower_forest`.
+  </Card>
+  <Card title="Tea Shrubs">
+    Two placed features exist: `tea_shrub_placed` for the standard variant and `forest_tea_shrub_placed` for the forest-specific variant. Biomes are defined by `has_tea_shrub`.
+  </Card>
+  <Card title="Violet Bellflower">
+    Generates in biomes defined by `has_violet_bellflower`.
+  </Card>
+</CardGroup>
+
+## Grassy Dirt
+
+**Grassy Dirt** is a custom dirt-variant block that generates in patches in forest-type biomes: `minecraft:forest`, `minecraft:flower_forest`, `minecraft:birch_forest`, `minecraft:dark_forest`, and `minecraft:old_growth_birch_forest`. A second tag `has_grassy_dirt_patches` controls denser patch generation.
+
+<AccordionGroup>
+  <Accordion title="Survival behavior">
+    Grassy Dirt will convert to regular Dirt if a block is placed above it that prevents sufficient light from reaching the surface (the same survival check as Grass Block). It can also be bonemealed to convert it into a vanilla Grass Block.
+  </Accordion>
+  <Accordion title="Hoe interactions (since 3.0.0)">
+    Right-clicking Grassy Dirt with a hoe converts it into either a **Dirt Path** or **Farmland**, matching the same hoe interactions available on vanilla Dirt and Grass Block.
+  </Accordion>
+</AccordionGroup>
+
+## Spongekin Sprouts
+
+Since 3.0.0, **Spongekin Sprouts** generate naturally on the floor of sponge rooms inside **Ocean Monuments**. They are `BushBlock`-based plants that require a full-face-sturdy block below them and are always waterlogged (they can only be placed in source water blocks).
+
+<Warning>
+  Breaking a Spongekin Sprout with a bare hand or standard tool drops **Spongekin Seeds**. To collect the sprout block itself, use **Shears** or a tool enchanted with **Silk Touch**.
+</Warning>
+
+Prior to 3.0.0, Spongekin Seeds were obtainable as a Guardian drop. That drop was removed when sprout generation was added.
+
+## Golden Apple Sapling
+
+The **Golden Apple Sapling** is a rare sapling hidden inside the walls of **Woodland Mansions**. Its rarity is set to `epic`.
+
+- The sapling and its potted variant play quiet **ambient sounds** at random intervals (25% chance per `animateTick` call), designed to subtly alert players who are nearby.
+- Finding one for the first time unlocks the **"Money Does Grow On Trees!"** advancement.
+- Growing one in a dark environment and harvesting its fruit unlocks **"Golden Thumb"**.
+
+The Golden Apple tree uses a custom `bountifulfares:golden_apple_trunk_placer` and weighted foliage that blends regular and flowering Golden Apple Leaves. Hanging Golden Apple fruit attaches to the undersides of leaves during generation with a 25% probability per leaf.
+
+## Hoary Apple Trees
+
+**Hoary Apple** trees are obtained by growing a Hoary Apple Sapling, which is itself grown from **Hoary Seeds** — ancient seeds obtained from **Sniffers**. The sapling grows through a two-stage crop block (`HoaryAppleSaplingCropBlock`) before becoming a full sapling.
+
+## Prismarine Blossom
+
+**Prismarine Blossom** is a small aquatic bush-type block that can be placed on any face-sturdy block. When waterlogged, it emits custom `PRISMARINE_BLOSSOM` particles during `animateTick`. It can be placed and waterlogged manually; it is not currently part of a placed feature for automatic ocean generation.
+
+## Mulch
+
+**Mulch** is a decorative ground-cover block that behaves similarly to Snow Layers, stacking up to **8 layers** in a single block space. It is also a gravity-affected block — stacks that lose their supporting block will fall. Key properties:
+
+- Layer heights correspond to voxel heights of 2, 4, 6, 8, 10, 12, 14, and 16 pixels
+- Entities walking on Mulch take **20% of normal fall damage** (`fallDamageMultiplier = 0.2`)
+- Mobs can pathfind through Mulch layers 1–4 (`LAND` path type); layers 5–8 are treated as solid
+- Placing a Mulch item on an existing Mulch block increments the layer count by one, up to the maximum of 8
+
+## New paintings
+
+Bountiful Fares registers new painting variants featuring mod-related content. These paintings can appear in the world wherever vanilla painting placement occurs and are available in the Paintings creative tab.
+
+## Sniffer interactions
+
+In addition to Hoary Seeds, **Sniffers** can dig up **Lapisberry** seeds from the ground. Lapisberries can be crafted into Blue Dye (since 3.0.0) and are one of the sources of the mod's unique flora.
+
+## Worldgen feature summary
+
+The following configured features are registered under `data/bountifulfares/worldgen/configured_feature/`:
+
+`apple`, `plum`, `orange`, `lemon`, `walnut`, `palm`, `hoary`, `golden_apple`, `wild_wheat`, `large_wild_wheat`, `wild_maize`, `large_wild_maize`, `wild_passion_fruit`, `wild_elderberry`, `wild_carrots`, `large_wild_carrots`, `wild_potatoes`, `large_wild_potatoes`, `wild_leeks`, `large_wild_leeks`, `wild_beetroots`, `large_wild_beetroots`, `chamomile`, `honeysuckle`, `violet_bellflower`, `tea_shrub`, `forest_tea_shrub`, `patch_grassy_dirt`

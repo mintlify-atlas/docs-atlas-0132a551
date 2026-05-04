@@ -1,0 +1,175 @@
+---
+title: "Functional blocks: Gristmill, Ceramic Dish, and more"
+description: "Reference for every functional block in Bountiful Fares — Gristmill, Fermentation Vessel, Ceramic Dish, Flour Block, Coir Bed, Ceramic Chest, and Shulker Tiffin."
+---
+
+Bountiful Fares adds several purpose-built blocks that power the mod's food processing loop. The **Gristmill** converts raw grains into Flour, the **Fermentation Vessel** brews ingredients into drinks and fermented foods over time, and the **Ceramic Dish** serves food with redstone-readable fill levels. Alongside these are smaller utility blocks — the gravity-affected Flour Block, the decorative Coir Bed, and the portable Shulker Tiffin — each filling a specific role in a food-focused world.
+
+## Gristmill
+
+The Gristmill is a directional block entity used to mill grains and other ingredients into Flour. It has two inventory slots — an input slot and an output slot — and processes one item at a time.
+
+### Using the Gristmill
+
+<Steps>
+  <Step title="Place the Gristmill">
+    Place the Gristmill anywhere. It faces the direction opposite to the player, similar to a furnace. Open its GUI by right-clicking with an empty hand.
+  </Step>
+  <Step title="Insert a grain">
+    Place a millable ingredient (such as Wheat or Maize) in the input slot. The Gristmill will begin milling automatically when a valid milling recipe is present and the output slot has room.
+  </Step>
+  <Step title="Collect Flour">
+    Once milling is complete, Flour (or another milled output) appears in the output slot. Milling progress resets if the recipe becomes invalid before finishing.
+  </Step>
+</Steps>
+
+<Note>
+  The time to complete one milling cycle is configurable via the `millingTime` config value (in seconds). The default is 4 seconds (80 ticks). While milling, the block emits a grinding sound at random intervals.
+</Note>
+
+### Automation
+
+The Gristmill exposes its slots to hoppers and pipes based on face direction:
+- **Top face** and **side faces** → input slot (slot 0)
+- **Bottom face** → output slot (slot 1)
+
+### Comparator output
+
+The Gristmill outputs a redstone signal to an adjacent comparator based on the **combined inventory fill level**, using the same calculation as a vanilla Furnace (`AbstractContainerMenu.getRedstoneSignalFromBlockEntity`).
+
+### Flour uses
+
+Flour is the basis for most baked goods in the mod. It can also be used in its block form — see [Flour Block](#flour-block) below.
+
+Milling grains into Flour for the first time unlocks the **"Stop and Smell the Flours"** advancement.
+
+## Fermentation Vessel
+
+The Fermentation Vessel is a waterlogged-capable block entity that ferments ingredients into drinks and foods over time. It supports four internal states: `EMPTY`, `WATER`, `FERMENTING`, and `FERMENTED`.
+
+### Using the Fermentation Vessel
+
+<Steps>
+  <Step title="Fill with water">
+    Right-click the vessel with a Water Bucket, a Water Potion, or a Water Cup to fill it. The vessel transitions from `EMPTY` to `WATER`. The empty container (bucket, glass bottle, or cup) is returned to your inventory.
+  </Step>
+  <Step title="Add an ingredient">
+    Right-click the water-filled vessel with a fermentable item. If a matching fermentation recipe exists, the item is inserted and the vessel transitions to `FERMENTING`. Any crafting remainder from the ingredient is returned.
+  </Step>
+  <Step title="Wait for fermentation">
+    The vessel ferments over time. Colored bubble particles rise from the vessel while it is in the `FERMENTING` state (configurable). When complete, the state changes to `FERMENTED`.
+  </Step>
+  <Step title="Collect the result">
+    Right-click the fermented vessel with an empty hand (or an appropriate container) to extract the result.
+  </Step>
+</Steps>
+
+<Note>
+  The Fermentation Vessel can be waterlogged. Water flow will not eject it, but placing it in a waterlogged position fills the block space with water as expected.
+</Note>
+
+### Comparator output
+
+| State | Signal |
+|---|---|
+| `EMPTY` or `WATER` | 0 |
+| `FERMENTING` | 1–15, scaled to fermentation progress |
+| `FERMENTED` | 15 |
+
+The output is clamped to 1 at minimum while the vessel contains an item, so it is always distinguishable from the empty state.
+
+For fermentation recipes, see [Fermentation](/food/fermentation).
+
+## Ceramic Dish
+
+The Ceramic Dish is a thin, flat block entity used to display or serve food items. It faces the direction the placing player is looking and can be waterlogged.
+
+### Interactions
+
+| Action | Result |
+|---|---|
+| Right-click with an item | Places item on the dish (if empty) |
+| Right-click with an empty hand | Eats the food on the dish (if edible and player is hungry) |
+| Sneak + right-click with empty hand | Picks up the item from the dish into hand |
+| Right-click with Artisan Brush | Dyes the dish (color is preserved along with contents) |
+| Right-click with Wet Sponge | Resets the dish color to default |
+
+<Note>
+  Foods that produce a crafting remainder (like Stew returning a Bowl) will drop that remainder as an item entity when eaten off the dish. Whether foods with a crafting remainder can be eaten off a dish is controlled by the `containerFoodsEatableOnDish` config option. Pumpkin Pie can only be eaten off a dish if the `enablePlaceablePumpkinPie` config option is disabled.
+</Note>
+
+When a Ceramic Dish is broken, any item resting on it pops off as a dropped item.
+
+### Comparator output
+
+| Dish contents | Signal |
+|---|---|
+| Empty | 0 |
+| Inedible item | 1 |
+| Edible item | 1–15, scaled to `nutrition / 20` |
+
+The nutrition-based scale mirrors the Fermentation Vessel formula, making both blocks suitable inputs for redstone sorting or monitoring systems.
+
+## Flour Block
+
+The **Flour Block** is a gravity-affected block (like Sand or Gravel) made from compacted Flour. It emits flour cloud particles in several situations:
+
+- **Being mined** — particles spawn each tick during the break animation
+- **Being broken** — a burst of 10–20 particles on destroy
+- **Explosion** — 50–100 particles scatter outward
+- **Wind Charge hit** — triggers particle emission on impact
+
+<Tip>
+  Throwing Flour (or a Flour Block) at your feet creates a quick smoke-screen escape. Doing so for the first time unlocks the **"Poof!"** advancement.
+</Tip>
+
+## Coir Bed
+
+The **Coir Bed** is a decorative bed crafted from **3 Coconut Coir** and **3 Planks** (of any wood type), contributed by community member Artyrian.
+
+<Warning>
+  Sleeping in a Coir Bed does **not** set your spawn point. It will pass the night as normal, but you will still respawn at your previous spawn point (or world spawn) if you die. Use it for aesthetics, not as a respawn anchor.
+</Warning>
+
+Like a vanilla Bed, the Coir Bed will explode if used in the Nether or End dimensions.
+
+## Ceramic Chest
+
+The **Ceramic Chest** is a dyeable chest that otherwise functions identically to a vanilla Chest, including double-chest support. Two adjacent Ceramic Chests will automatically combine into a large chest if they share the same dye color when placed. It can be dyed using the Artisan Brush or a Wet Sponge (to reset color), and the color is preserved when the chest is broken and re-placed.
+
+## Shulker Tiffin
+
+The **Shulker Tiffin** is a portable food container item crafted from **2 Shulker Shells** and a **Bowl**.
+
+<CardGroup cols={2}>
+  <Card title="Food storage">
+    Holds up to 64 of any single food item, regardless of that item's normal stack size limit. If the stored food has a crafting remainder (e.g., a bowl), you need a stack of that container item to retrieve the food.
+  </Card>
+  <Card title="Eating directly">
+    Right-click with the tiffin in hand to eat directly from it. The food item inside is consumed without needing to remove it first.
+  </Card>
+  <Card title="Dyeable">
+    Can be dyed all 16 colors, like other Shulker Boxes.
+  </Card>
+  <Card title="Crafting shortcut">
+    Any crafting recipe that uses a food item's container can substitute a Shulker Tiffin instead, crafting the food directly into the tiffin.
+  </Card>
+</CardGroup>
+
+### Config options
+
+| Option | Effect |
+|---|---|
+| Render food in slot corner | Displays the stored food as a small icon in the corner of the tiffin's inventory slot |
+| Render food as held item | Shows the stored food as the item visually held in the player's hand instead of the tiffin |
+
+### Advancements
+
+| Advancement | Trigger |
+|---|---|
+| Chef's Bundle | Craft a Shulker Tiffin |
+| Meal Prepping | Completely fill a Shulker Tiffin with food |
+
+### Appleskin compatibility
+
+When Appleskin is installed, food values of items stored inside a Shulker Tiffin are correctly displayed in the hunger saturation tooltip.

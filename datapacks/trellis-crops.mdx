@@ -1,0 +1,104 @@
+---
+title: "Custom trellis crops via datapacks"
+description: "Define growable trellis crops with multiple stages, a harvest produce item, configurable drop counts, and growth probability using a JSON file in your datapack."
+---
+
+A trellis crop is a growable plant that progresses through multiple stages on a Bountiful Fares trellis block. When the crop reaches its final stage it can be harvested, dropping a configurable number of the produce item and resetting to stage zero. Built-in examples include Elderberries, Glow Berries, Lapisberries, and Passion Fruit.
+
+## File location
+
+```
+data/<pack-id>/bountifulfares/trellis_crop/<name>.json
+```
+
+Each JSON file in this directory registers one trellis crop. The file name becomes the entry's ID within your pack namespace.
+
+## Schema
+
+<ParamField path="seeds" type="string" required>
+  The item ID of the seed used to plant this crop on a trellis, e.g. `"minecraft:beetroot_seeds"`. Right-clicking a trellis with this item plants the crop.
+</ParamField>
+
+<ParamField path="produce" type="string" required>
+  The item ID of the item dropped when the crop is harvested at its final stage, e.g. `"minecraft:beetroot"`. The seed and produce can be the same item for crops that are self-seeding.
+</ParamField>
+
+<ParamField path="texture" type="string" required>
+  The base texture location for this crop. Each growth stage appends a numeric suffix — stage 0 uses `_0`, stage 1 uses `_1`, and so on. For example, `"example:block/beetroot_trellis"` resolves to `example:block/beetroot_trellis_0`, `example:block/beetroot_trellis_1`, etc.
+</ParamField>
+
+<ParamField path="model" type="string" required>
+  Controls the visual orientation of the crop on the trellis. Accepted values:
+
+  - `"default"` — standard upright orientation, used for most crops.
+  - `"inverted"` — flipped orientation for downward-growing plants.
+</ParamField>
+
+<ParamField path="stages" type="integer" required>
+  The number of growth stages this crop has. Must be between `1` and `8`. The final stage is the harvestable stage.
+</ParamField>
+
+<ParamField path="grow_chance" type="float" required>
+  The probability that the crop advances one growth stage per random tick. Must be between `0.0` and `1.0`. Lower values make the crop grow more slowly. For reference, `0.2` is typical for most built-in crops.
+</ParamField>
+
+<ParamField path="min_drops" type="integer" required>
+  The minimum number of produce items dropped when the crop is harvested. Must be between `1` and `64`.
+</ParamField>
+
+<ParamField path="max_drops" type="integer" required>
+  The maximum number of produce items dropped when the crop is harvested. Must be between `1` and `64`. Should be greater than or equal to `min_drops`.
+</ParamField>
+
+## Example
+
+The `example_trellis_plants` datapack in the repository includes this trellis crop:
+
+```json test_crop.json
+{
+  "seeds": "minecraft:beetroot_seeds",
+  "produce": "minecraft:beetroot",
+  "texture": "example:block/beetroot_trellis",
+  "model": "default",
+  "stages": 4,
+  "grow_chance": 0.2,
+  "min_drops": 2,
+  "max_drops": 6
+}
+```
+
+For reference, here are two of the built-in Bountiful Fares trellis crops:
+
+<CodeGroup>
+
+```json elderberry.json
+{
+  "seeds": "bountifulfares:elderberries",
+  "produce": "bountifulfares:elderberries",
+  "texture": "bountifulfares:block/elderberry_trellis",
+  "model": "default",
+  "stages": 4,
+  "grow_chance": 0.2,
+  "min_drops": 1,
+  "max_drops": 3
+}
+```
+
+```json glow_berries.json
+{
+  "seeds": "minecraft:glow_berries",
+  "produce": "minecraft:glow_berries",
+  "texture": "bountifulfares:block/glow_berry_trellis",
+  "model": "default",
+  "stages": 4,
+  "grow_chance": 0.3,
+  "min_drops": 2,
+  "max_drops": 3
+}
+```
+
+</CodeGroup>
+
+<Tip>
+  You need one texture file per growth stage. For a crop with `"stages": 4`, create four textures named `<base>_0.png`, `<base>_1.png`, `<base>_2.png`, and `<base>_3.png` in your resource pack. Stage `_0` is the newly planted state; the highest-numbered stage is the harvestable state.
+</Tip>

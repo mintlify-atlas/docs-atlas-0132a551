@@ -1,0 +1,43 @@
+---
+title: "Datapack support: extend Bountiful Fares content"
+description: "Use datapacks to add custom trellis plants, trellis crops, and grass seeds interactions without modifying Bountiful Fares itself."
+---
+
+Bountiful Fares is designed to be data-driven, meaning most of the content that powers trellises and the Grass Seeds item is defined in JSON files rather than hard-coded. You can add new trellis decorative plants, growable trellis crops, and custom grass seeds interactions by shipping JSON files inside a standard Minecraft datapack — no Java required.
+
+## What you can add
+
+<CardGroup cols={3}>
+  <Card title="Trellis plants" icon="leaf" href="/datapacks/trellis-plants">
+    Define decorative plants that can be placed on a trellis. These have no growth stages and are purely cosmetic.
+  </Card>
+  <Card title="Trellis crops" icon="seedling" href="/datapacks/trellis-crops">
+    Define growable crops with multiple stages, a harvest item, and configurable drop counts.
+  </Card>
+  <Card title="Grass seeds interactions" icon="wheat" href="/datapacks/grass-seeds">
+    Define which soil blocks the Grass Seeds item can be used on and what gets placed as a result.
+  </Card>
+</CardGroup>
+
+## Directory structure
+
+Place your JSON files inside the standard datapack directory layout. Bountiful Fares reads from three sub-directories under the `bountifulfares/` namespace:
+
+```
+data/
+  <your-pack-id>/
+    bountifulfares/
+      trellis_plant/           ← decorative trellis plants
+      trellis_crop/            ← growable trellis crops
+      grass_seeds_interaction/ ← grass seeds behavior
+```
+
+Each file in those directories defines one entry. The file name is used as the entry's ID within your pack namespace.
+
+## Working examples
+
+The Bountiful Fares GitHub repository includes a fully working reference datapack at `example_trellis_plants/`. It demonstrates a trellis plant using `model: "default"`, one using `model: "inverted"`, and a trellis crop — all with real texture references.
+
+<Note>
+  Vanilla Bountiful Fares content (built-in trellis plants, crops, and grass seeds interactions) is also defined using these same JSON files. You can find them under `common/src/main/resources/data/bountifulfares/bountifulfares/` in the repository as a reference for how the mod itself uses the system.
+</Note>

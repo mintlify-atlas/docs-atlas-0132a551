@@ -1,0 +1,96 @@
+---
+title: "Custom trellis plants via datapacks"
+description: "Define decorative plants for Bountiful Fares trellises using a JSON file in your datapack — no growth stages, just placement and texture."
+---
+
+A trellis plant is a decorative item that can be placed on a Bountiful Fares trellis block. Unlike trellis crops, plants have no growth stages — once placed, they appear fully rendered using the texture and model you define. Examples of built-in trellis plants include Vine, Twisting Vines, Sunflower, and Lilac.
+
+## File location
+
+```
+data/<pack-id>/bountifulfares/trellis_plant/<name>.json
+```
+
+Each JSON file in this directory registers one trellis plant. The file name becomes the entry's ID within your pack namespace.
+
+## Schema
+
+<ParamField path="plant" type="string" required>
+  The item ID of the item used to place this plant on a trellis. Use a namespaced ID such as `"minecraft:wither_rose"`. This is also the item the plant drops when broken.
+</ParamField>
+
+<ParamField path="texture" type="string" required>
+  The texture location used to render the plant on the trellis. Use a namespaced resource location pointing to a block texture, e.g. `"example:block/wither_trellis"`.
+</ParamField>
+
+<ParamField path="model" type="string" required>
+  Controls the visual orientation of the plant on the trellis. Accepted values:
+
+  - `"default"` — standard upright or side-attached orientation, used for most plants.
+  - `"inverted"` — flipped orientation for downward-growing plants such as Twisting Vines.
+</ParamField>
+
+<ParamField path="can_duplicate" type="boolean" required>
+  Whether Bone Meal can be used on this plant to duplicate it. Set to `true` to allow players to use Bone Meal for additional drops; `false` to disable it.
+</ParamField>
+
+## Examples
+
+The `example_trellis_plants` datapack in the repository includes two plants. The first uses the default model:
+
+```json test_plant.json
+{
+  "plant": "minecraft:wither_rose",
+  "texture": "example:block/wither_trellis",
+  "model": "default",
+  "can_duplicate": false
+}
+```
+
+The second uses the inverted model, suitable for a downward-growing plant:
+
+```json another_test_plant.json
+{
+  "plant": "minecraft:poppy",
+  "texture": "example:block/poppy_trellis",
+  "model": "inverted",
+  "can_duplicate": false
+}
+```
+
+For reference, here are two of the built-in Bountiful Fares trellis plants:
+
+<CodeGroup>
+
+```json vine.json
+{
+  "plant": "minecraft:vine",
+  "model": "default",
+  "texture": "bountifulfares:block/vine_trellis",
+  "can_duplicate": false
+}
+```
+
+```json twisting_vine.json
+{
+  "plant": "minecraft:twisting_vines",
+  "model": "inverted",
+  "texture": "bountifulfares:block/twisting_trellis",
+  "can_duplicate": true
+}
+```
+
+```json sunflower.json
+{
+  "plant": "minecraft:sunflower",
+  "model": "default",
+  "texture": "bountifulfares:block/sunflower_trellis",
+  "can_duplicate": true
+}
+```
+
+</CodeGroup>
+
+<Note>
+  The `"inverted"` model was introduced specifically for Twisting Vines, which grow downward. Use it for any plant whose visual appearance should be rendered flipped relative to the trellis face.
+</Note>

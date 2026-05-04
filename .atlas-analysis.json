@@ -1,0 +1,98 @@
+{
+  "projectType": "general",
+  "projectName": "Bountiful Fares",
+  "projectDescription": "A Minecraft Fabric/NeoForge mod that expands food, farming, and decoration with fruit trees, new crops, fermentation, trellises, ceramic blocks, and unique food effects.",
+  "theme": "almond",
+  "primaryColor": "#7C9E5C",
+  "lightColor": "#A8C483",
+  "darkColor": "#4A6835",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guide",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": ["introduction", "installation"]
+          },
+          {
+            "group": "Farming & Crops",
+            "pages": [
+              "farming/fruit-trees",
+              "farming/crops",
+              "farming/trellises"
+            ]
+          },
+          {
+            "group": "Food & Cooking",
+            "pages": [
+              "food/food-items",
+              "food/fermentation",
+              "food/effects"
+            ]
+          },
+          {
+            "group": "Blocks & Decoration",
+            "pages": [
+              "blocks/ceramic",
+              "blocks/functional-blocks",
+              "blocks/world-generation"
+            ]
+          },
+          {
+            "group": "Compatibility & FAQ",
+            "pages": [
+              "compatibility",
+              "faq"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Modding",
+        "groups": [
+          {
+            "group": "Datapacks",
+            "pages": [
+              "datapacks/overview",
+              "datapacks/trellis-plants",
+              "datapacks/trellis-crops",
+              "datapacks/grass-seeds"
+            ]
+          },
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog/3-0-0",
+              "changelog/latest"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Fruit trees for Apples, Oranges, Lemons, Plums, and Coconuts",
+    "Wild crops and new crop types including Passion Fruit, Leeks, and Spongekins",
+    "Trellises for decoration or growing vine crops (data-driven via datapacks)",
+    "Fermentation system unlocking Mead, Cider, Wine, and more",
+    "Custom food effects: Enrichment, Ebullience, Acidic, Restoration, Stupor",
+    "Dyeable ceramic building blocks in all 16 colors",
+    "Gristmill for milling grains into Flour",
+    "Shulker Tiffin — portable food container holding up to 64 of any food",
+    "Ancient plants from Sniffers: Hoary Apple Trees and Lapisberries",
+    "Compatibility with Nature's Spirit, Farmer's Delight, Amendments, and more"
+  ],
+  "publicApiSurface": [
+    "bountifulfares/trellis_plant JSON — data-driven decorative trellis plant definition",
+    "bountifulfares/trellis_crop JSON — data-driven trellis crop definition",
+    "bountifulfares/grass_seeds_interaction JSON — data-driven grass seeds interaction",
+    "MobEffect: ACIDIC — neutralizes/interacts with food chemistry",
+    "MobEffect: ENRICHMENT — bonus attack damage, movement speed, attack speed",
+    "MobEffect: EBULLIENCE — beneficial tea-based effect",
+    "MobEffect: RESTORATION — beneficial stew-based effect",
+    "MobEffect: STUPOR — neutral effect",
+    "BFBlocks registry — all blocks registered by the mod",
+    "BFItems registry — all items registered by the mod"
+  ]
+}

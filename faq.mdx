@@ -1,0 +1,64 @@
+---
+title: "Frequently asked questions about Bountiful Fares"
+description: "Answers to common questions about Bountiful Fares: supported versions, modpack use, porting, assets, bug reports, and what broke when updating to 3.0.0."
+---
+
+These are the most common questions asked about Bountiful Fares. If you don't find your answer here, check the [wiki](https://github.com/Heccology/Bountiful-Fares/wiki) or report your issue on GitHub or Discord.
+
+<AccordionGroup>
+  <Accordion title="Is this a Farmer's Delight addon?">
+    No. Bountiful Fares is an independent mod. It is not built on top of Farmer's Delight and does not require it. Optional compatibility with Farmer's Delight is included, but the two mods are completely separate.
+  </Accordion>
+
+  <Accordion title="Will there be a Bedrock version?">
+    No. Don't expect anything Bedrock-related, and please do not port Bountiful Fares to Bedrock yourself.
+  </Accordion>
+
+  <Accordion title="Can I port Bountiful Fares to older versions?">
+    No. Some features require the latest versions of Minecraft and the modding toolchain. Please do not port Bountiful Fares to older versions yourself.
+  </Accordion>
+
+  <Accordion title="What Minecraft versions are supported?">
+    Currently, only the 1.20.1 and 1.21.1 versions of Bountiful Fares are being updated. A port to versions beyond those is unlikely.
+  </Accordion>
+
+  <Accordion title="Can I use Bountiful Fares in a modpack?">
+    Absolutely! You are free to include Bountiful Fares in modpacks and on servers.
+  </Accordion>
+
+  <Accordion title="Can I use Bountiful Fares's models or textures for a separate project?">
+    No. Please do not use any of Bountiful Fares's models or textures for anything else, even with credit. Check the license on GitHub for the full terms.
+  </Accordion>
+
+  <Accordion title="Can I use Bountiful Fares's assets for an addon?">
+    In short, yes — but please check the license on GitHub before doing so to make sure your use is permitted.
+  </Accordion>
+
+  <Accordion title="How do I report bugs?">
+    You can report bugs on [GitHub Issues](https://github.com/Heccology/Bountiful-Fares/issues) or in the [Discord server](https://discord.gg/yrDsSeNkWu). When reporting, include your Minecraft version, mod loader, mod version, and steps to reproduce the issue.
+  </Accordion>
+
+  <Accordion title="I updated from before 3.0.0 and my trellises or items broke!">
+    Updating from a version before 3.0.0 to one after causes three known breakages:
+
+    - **Trellises** — Trellis blocks that had plants on them may disappear. To avoid losing them, break the plants off your trellises before updating.
+    - **Tea Blends** — Tea blend items have been removed. Their functionality has been moved to the individual items they were made from.
+    - **Custard** — Custard items have been removed entirely.
+
+    <Warning>
+      These are breaking changes. Back up your world before updating if you have existing trellis builds or rely on Tea Blends or Custard items.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Why do I need NexusLib?">
+    NexusLib is a required library mod that Bountiful Fares depends on as of version 3.0.0. It provides core functionality used by the mod. Download it from [Modrinth](https://modrinth.com/mod/nexuslib) and place it in your mods folder alongside Bountiful Fares.
+  </Accordion>
+
+  <Accordion title="Where can I find more detailed information about features?">
+    The official [GitHub wiki](https://github.com/Heccology/Bountiful-Fares/wiki) covers features in detail, including mechanics, recipes, and configuration options.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Report a bug" icon="bug" href="https://github.com/Heccology/Bountiful-Fares/issues">
+  Open a GitHub issue to report a bug or request a feature. Include your Minecraft version, mod loader, and steps to reproduce.
+</Card>

@@ -1,0 +1,133 @@
+---
+title: 'Food effects: Enrichment, Ebullience, Acidic, and more'
+description: 'Reference for every custom mob effect added by Bountiful Fares — sources, durations, attributes, and stacking mechanics for all five effects.'
+---
+
+Bountiful Fares adds five custom mob effects that go well beyond simple stat boosts. Enrichment rewards high-tier cooking with stacking combat bonuses; Ebullience quietly counters food exhaustion while you drink tea; Restoration slowly heals you back up to your pre-meal health; Acidic is a curious neutral effect tied to citrus food and an achievement; and Stupor is a reserved effect present in the registry. Each effect has a distinct color, category, and interaction model.
+
+## Effects in detail
+
+<AccordionGroup>
+  <Accordion title="Enrichment — #ffd48f (beneficial)">
+    Enrichment is the primary reward for eating high-tier prepared food. It provides three simultaneous attribute bonuses for as long as the effect lasts.
+
+    **Attribute modifiers (level I, amplifier 0):**
+
+    | Attribute | Operation | Value |
+    |---|---|---|
+    | Attack Damage | Flat addition | +1 |
+    | Movement Speed | Multiply total | +8% |
+    | Attack Speed | Multiply total | +8% |
+
+    The effect is always granted at amplifier 0 (displayed as level I) regardless of how many Enrichment sources you eat. Eating a second source while Enrichment is active does **not** increase the level — it only refreshes or extends the duration, depending on which source was last eaten.
+
+    **Sources:**
+
+    | Food | Duration |
+    |---|---|
+    | Passion Glazed Salmon | 2400 ticks (2 min) |
+    | Coconut Crusted Cod | 2400 ticks (2 min) |
+    | Bountiful Stew | 2400 ticks (2 min) |
+    | Crusted Beef | 2400 ticks (2 min) |
+    | Leek Stew | 1800 ticks (1.5 min) |
+    | Mushroom Stuffed Potato | 1800 ticks (1.5 min) |
+    | Forest Medley | 1200 ticks (1 min) |
+    | Arid Medley | 1200 ticks (1 min) |
+    | Meadow Medley | 1200 ticks (1 min) |
+    | Mire Medley | 1200 ticks (1 min) |
+    | Coastal Medley | 1200 ticks (1 min) |
+    | Tropical Medley | 1200 ticks (1 min) |
+    | Berry Stuffed Potato | 1200 ticks (1 min) |
+    | Maize Stuffed Potato | 1200 ticks (1 min) |
+    | Apple Compote Jar | 1200 ticks (1 min) |
+    | Orange Compote Jar | 1200 ticks (1 min) |
+    | Lemon Compote Jar | 1200 ticks (1 min) |
+    | Plum Compote Jar | 1200 ticks (1 min) |
+    | Hoary Compote Jar | 1200 ticks (1 min) |
+
+    <Tip>
+      Medleys stack to 16 and give Enrichment for a full minute each. Eat one right before a fight to top up the buff, then follow with a bowl meal to push the duration to two minutes.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Ebullience — #E9DEE2 (beneficial)">
+    Ebullience is the effect granted by all six tea cup varieties. While it is active, the player's food exhaustion is continuously reset to zero, meaning your hunger bar depletes far more slowly than normal. This makes tea an excellent choice for extended exploration sessions where stopping to eat would be inconvenient.
+
+    **Mechanic:** Every game tick that Ebullience is active, `player.getFoodData().setExhaustion(0f)` is called. Actions that normally drain exhaustion (sprinting, jumping, taking damage) have no net hunger cost while the effect lasts.
+
+    **Sources:**
+
+    | Food | Duration |
+    |---|---|
+    | Green Tea Cup | 6000 ticks (5 min) |
+    | Black Tea Cup | 6000 ticks (5 min) |
+    | Chamomile Tea Cup | 6000 ticks (5 min) |
+    | Honeysuckle Tea Cup | 6000 ticks (5 min) |
+    | Bellflower Tea Cup | 6000 ticks (5 min) |
+    | Torchflower Tea Cup | 6000 ticks (5 min) |
+
+    All tea cups are always edible and stack to 16. Each drink returns a Cup to your inventory.
+  </Accordion>
+
+  <Accordion title="Acidic — #D1FF00 (neutral)">
+    Acidic is a neutral effect obtained from citrus-derived foods. The effect itself is passive — it currently has no recurring tick behavior — but its amplifier is the key mechanic.
+
+    **Sources:**
+
+    | Food | Duration | Amplifier |
+    |---|---|---|
+    | Citrus Essence | 300 ticks (15 s) | 0 (level I) |
+    | Sour Candy | 200 ticks (10 s) — 20% chance | 0 (level I) |
+
+    **Stacking:** Because Acidic is a standard mob effect, eating additional sources while it is already active can stack the amplifier if the new application has a higher amplifier value. The achievement "**This Can't be Good for You**" is unlocked by acidifying an effect enough to increase its amplifier by 2 — meaning you need to apply Acidic repeatedly or from a high-amplifier source to cross that threshold.
+
+    <Note>
+      The per-tick amplification behavior visible in commented-out code in `AcidicEffect.java` is not currently active. The effect is neutral in its present state — it neither harms nor helps directly, but its amplifier level is tracked for the achievement.
+    </Note>
+  </Accordion>
+
+  <Accordion title="Restoration — #FF4B19 (beneficial)">
+    Restoration is a healing-over-time effect that gradually restores health — but only up to the health level you had when the effect was first applied. If you were already at full health when you ate, Restoration does nothing until you take damage and your health drops below the snapshot value.
+
+    **Mechanic:** On application, your current health is recorded as `regenMax`. Every tick while the effect is active and your health is below `regenMax` and below your maximum health, you are healed for `0.1 × (amplifier + 1)` HP. At amplifier 0 (level I), that is 0.1 HP per tick (2 HP per second).
+
+    **Sources:**
+
+    | Food | Duration |
+    |---|---|
+    | Bountiful Stew | 2400 ticks (2 min) |
+    | Fish Stew | 1800 ticks (1.5 min) |
+    | Apple Stew | 1800 ticks (1.5 min) |
+    | Coconut Stew | 1800 ticks (1.5 min) |
+
+    <Tip>
+      Eat a bowl stew immediately after taking damage to get the most out of Restoration. Eating it at full health still buffers the regen in case you take damage during the effect's window.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Stupor — #5F1ED8 (neutral)">
+    Stupor is a neutral effect registered in the Bountiful Fares effect registry. Its tick behavior is currently inactive (the relevant code is commented out in `StuporEffect.java`). No food item in the current release applies Stupor directly.
+
+    In an earlier design, Stupor was intended to strip existing effects from the player on application. This behavior is not present in the current build.
+  </Accordion>
+</AccordionGroup>
+
+## Effects summary table
+
+| Effect | Color | Category | Duration (typical) | Primary sources |
+|---|---|---|---|---|
+| Enrichment | `#ffd48f` | Beneficial | 1200–2400 ticks | Bowl meals, medleys, compote jars, stuffed potatoes |
+| Ebullience | `#E9DEE2` | Beneficial | 6000 ticks | All tea cups |
+| Acidic | `#D1FF00` | Neutral | 200–300 ticks | Citrus Essence, Sour Candy |
+| Restoration | `#FF4B19` | Beneficial | 1800–2400 ticks | Bountiful Stew, Fish Stew, Apple Stew, Coconut Stew |
+| Stupor | `#5F1ED8` | Neutral | — | Not currently obtainable from food |
+
+## Notes on effect behavior
+
+**Enrichment does not stack in level.** Eating multiple Enrichment sources never raises the effect above level I. Only the duration changes — Minecraft keeps the instance with the longer remaining time, so eating a 2400-tick source while a 1200-tick instance is running will extend the timer rather than reset it to 1200.
+
+**Ebullience exhaustion suppression is continuous.** Exhaustion is zeroed every single tick, not on a cooldown. Sprint, jump, and fight freely while drinking tea; your hunger bar will not budge.
+
+**Restoration heals from a snapshot.** The health recorded on application is fixed. Re-eating a stew mid-fight updates the snapshot only if the new application replaces the existing instance (i.e., the new duration is longer). Eating a second stew of the same type does not reset the snapshot to your current, lower health unless the new instance wins the duration comparison.
+
+**Acidic amplifier and the achievement.** The "This Can't be Good for You" advancement requires the Acidic effect's amplifier to increase by 2 from food. Because each food source currently applies amplifier 0, the only way to accumulate amplifier is for Minecraft's effect merging rules to treat a re-application as an upgrade. Plan accordingly if you are hunting this achievement.

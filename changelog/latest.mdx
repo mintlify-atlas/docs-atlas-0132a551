@@ -1,0 +1,86 @@
+---
+title: "Latest updates: versions 3.0.6–3.0.8"
+description: "Recent patch releases for Bountiful Fares covering bug fixes, item tag improvements, Ceramic Chests, villager trellis harvesting, and mod integrations."
+---
+
+Versions 3.0.6 through 3.0.8 are patch releases that follow the 3.0.0 Neo-fares Update. They address crashes, inventory edge cases, and tag correctness from 3.0.0, add Ceramic Chests and villager trellis harvesting in 3.0.6, fix flammability and translation issues in 3.0.7, and expand mod integrations in 3.0.8. The current release is **3.0.8**.
+
+<Note>
+  For history covering versions 3.0.1 through 3.0.5, see the [older changelogs](#earlier-3-0-x-versions) section below.
+</Note>
+
+<AccordionGroup>
+  <Accordion title="3.0.8 — Current release">
+    ### Integration
+
+    - Fixed missing loot tables for some blocks
+    - Added integration for Dungeon's Delight:
+      - Added Wormwood Trellis and Wormwood Pickets
+      - Added Stained Scrap Railing
+  </Accordion>
+
+  <Accordion title="3.0.7">
+    <Note>
+      This version requires NeoForge **21.1.219** or greater.
+    </Note>
+
+    ### Fixes
+
+    - Fixed Non-Flammable Pickets being smeltable
+    - Fixed Non-Flammable Pickets and Trellises being burnable
+    - Added various missing lang entries
+    - Fixed an incompatibility with InsaneLib that caused falling Coconuts and Walnuts to bug out
+    - Fixed an issue where falling Walnuts placing on path or farm blocks could reset the walnut count in the block
+
+    ### Changes
+
+    - Updated `ru_ru` translations
+    - Palm Fronds can now be placed onto blocks tagged with `#minecraft:leaves`
+    - Tweaked the speed of Ceramic Chest close sounds
+
+    ### Integration
+
+    - Fixed missing model for Appledog Block
+  </Accordion>
+
+  <Accordion title="3.0.6">
+    ### Fixes
+
+    - Fixed Walnut Saplings being in the `flower_pots` block tag instead of Potted Walnut Saplings
+    - Fixed eating from Shulker Tiffins duplicating containers when eating foods with remainders
+    - Fixed a crash that would occur when eating all food from a Shulker Tiffin and then opening the inventory in creative mode
+    - Fixed an issue with filling Tiffins and painting ceramic with Artisan Brushes from the inventory on dedicated servers
+    - Fixed an issue where the item pickup animation would play when opening or closing the inventory while holding a Shulker Tiffin
+    - Fixed Wild Elderberries occasionally generating on Woodland Mansions — as a result, Wild Elderberries and Passion Fruit can no longer generate inside structures at all
+    - Fixed a crash involving Falling Coconuts and world generation
+
+    ### Changes
+
+    - The block loot tables of Oak Leaves and Dark Oak Leaves are no longer completely overridden
+    - Block loot tables that reference Shears now use the item tag `c:tools/shear` instead
+    - Added Leek and Maize Seeds to the `villager_plantable_seeds` item tag
+    - Hoary Leaves now occasionally drop Hoary Saplings
+    - Added `vine_crops` item tag containing all produce from crops grown on Trellises
+    - Dyes can now be added and mixed into Artisan Brushes by right-clicking dye items onto the brush in an inventory
+    - Added various items to additional common item tags
+
+    ### New features
+
+    - Villagers can now harvest and collect crops that grow on Trellises
+    - Added Ceramic Chests:
+      - Can be dyed like other ceramic blocks
+      - Dyed ceramic chests only connect to other ceramic chests of a matching color
+      - Has unique open and close sounds (thanks to Artyrian)
+    - Added the advancement **No Dirty Dishes** — craft a food that normally has a container, like a Bowl, directly into a Shulker Tiffin
+  </Accordion>
+</AccordionGroup>
+
+## Earlier 3.0.x versions
+
+Versions 3.0.1 through 3.0.5 are archived in the `older/` directory of the repository. Here is a brief summary of what each covered:
+
+- **3.0.1** — Fixed Farmer's Delight custard recipe errors, milling and fermenting recipe namespace issues, hanging fruit culling, and a world-load stall caused by Antique Atlas.
+- **3.0.2** — Fixed hanging Golden Apple culling, a Surveyor-related world-load stall, a NeoForge furnace fuel crash, trellis placement sounds, walnut bonemealing, item composting on NeoForge, Tiffin item component loss, and missing walnut and hoary boats. Added `hanging_fruit` block tag and bee pollen support for hanging fruits.
+- **3.0.3** — Fixed wild passion fruit and elderberries not generating on NeoForge and chest boat missing textures. Added Blighted Birch trellises and pickets for Frontiers (Fabric). Cups can now take water from water blocks and cauldrons when dispensed, and Water Cups can convert Dirt into Mud.
+- **3.0.4** — Items that fill Fermentation Vessels with water are now tag-driven. Improved flour particle rendering. Added integration with Delicate Dyes and Every Compat (Wood Good). Changed how fermentation recipes display in EMI. Added generation config toggles for all trees, wild crops, and Grassy Dirt patches.
+- **3.0.5** — Requires NexusLib 1.1.4. Spongekins can now be sheared by a Dispenser. Fermentation recipes support item tags as ingredients. Fixed Infused and Coconut Candles not lighting with Flint & Steel from Dispensers. Added note block instruments to NeoForge. Fixed Tea Cups displaying incorrect Ebullience duration. Fixed Hoary and Walnut wall signs dropping Oak variants.

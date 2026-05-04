@@ -1,0 +1,106 @@
+---
+title: "Ceramic blocks: dyeable building and decoration"
+description: "Craft Ceramic Clay from Feldspar and Clay Balls to unlock a full suite of dyeable ceramic building blocks, doors, chests, and Tinged Glass."
+---
+
+Bountiful Fares adds a complete set of ceramic building and decoration blocks, all sharing a unified dyeing system. The material chain begins with **Feldspar**, a new ore-like material item, and **Clay Balls**. Combine them in a crafting table to produce **Ceramic Clay**, which is then fired or shaped into **Ceramic Tiles** — the foundation for every ceramic block form in the mod.
+
+## Obtaining ceramic materials
+
+<Steps>
+  <Step title="Gather Feldspar">
+    Feldspar is a new material item added by Bountiful Fares. It is the key ingredient that distinguishes ceramic clay from ordinary terracotta.
+  </Step>
+  <Step title="Craft Ceramic Clay">
+    Combine Feldspar with Clay Balls in a crafting table to produce Ceramic Clay. Crafting Ceramic Clay unlocks the **"It's Tofu!!!"** advancement.
+  </Step>
+  <Step title="Shape into building blocks">
+    Ceramic Clay is processed into Ceramic Tiles, which can then be crafted or stonecuttered into every available block form.
+  </Step>
+</Steps>
+
+## Available block forms
+
+Ceramic Tiles come in a full range of building shapes, including structural and interactive variants.
+
+<CardGroup cols={3}>
+  <Card title="Tiles">
+    The base block. Also available in a checkered mosaic pattern. Stonecutting recipes are available.
+  </Card>
+  <Card title="Slabs & Stairs">
+    Standard half-block slab and stair variants, registered to the appropriate vanilla block and item tags.
+  </Card>
+  <Card title="Walls">
+    Full-block-height wall variant. Feldspar Brick Walls were added in 3.0.0.
+  </Card>
+  <Card title="Pillars">
+    Rotatable pillar block with a distinct texture.
+  </Card>
+  <Card title="Buttons & Pressure Plates">
+    Functional redstone inputs in ceramic style.
+  </Card>
+  <Card title="Doors & Trapdoors">
+    Full two-tall door and single trapdoor variants, both dyeable.
+  </Card>
+  <Card title="Levers">
+    Ceramic-textured lever for redstone builds.
+  </Card>
+  <Card title="Ceramic Chest">
+    A dyeable chest that functions like a vanilla chest and supports double-chest placement when two adjacent chests share the same color.
+  </Card>
+</CardGroup>
+
+## Dyeing ceramic blocks
+
+All ceramic blocks share the same dyeing system. A block's color is stored in its block entity and is preserved when the block is picked up.
+
+<AccordionGroup>
+  <Accordion title="Dye directly">
+    Right-click any ceramic block with a vanilla dye item to apply that color. All 16 vanilla dye colors are supported.
+  </Accordion>
+  <Accordion title="Use the Artisan Brush">
+    The **Artisan Brush** is a craftable tool dedicated to dyeing. Right-click a ceramic block with a loaded brush to apply its color. Right-clicking a dye item onto the brush in your inventory loads the brush with that color.
+
+    **Inventory dyeing:** Right-click the brush over a stack of dyeable items — leather armor, wolf armor, or ceramic blocks — in an inventory to dye the entire stack at once.
+
+    **Armor Stand dyeing:** Use a dyed Artisan Brush on an Armor Stand that has leather armor equipped to dye the piece directly on the stand.
+
+    Crafting the Artisan Brush unlocks the **"I'm Something of an Artist"** advancement.
+  </Accordion>
+  <Accordion title="Reset color">
+    Right-click any dyed ceramic block with a **Wet Sponge** (without sneaking) to revert it to its default uncolored state.
+  </Accordion>
+  <Accordion title="Copy color from block">
+    Right-clicking a dyed block with an undyed Artisan Brush picks up that block's color onto the brush, ready to apply elsewhere.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Dyeing any ceramic block any color unlocks the **"Roy G Biv"** advancement. Dyeing a piece of leather armor on an Armor Stand unlocks **"High Fashion"**.
+</Tip>
+
+### Checkered mosaic pattern
+
+If a ceramic tile is already dyed and you apply the same color again using the Artisan Brush, the block converts to its checkered mosaic variant. Applying a Wet Sponge to a checkered block reverts it to the standard tile form.
+
+### Map color
+
+Since 3.0.0, dyeable ceramic blocks show as the closest available vanilla map color when they appear on a filled Map.
+
+## Solid Ceramic
+
+**Solid Ceramic** is a special command-only variant of the ceramic tile. It behaves like all other dyeable ceramic blocks but has a solid, flat-color texture rather than the tiled pattern.
+
+<Note>
+  Solid Ceramic cannot be obtained in Survival mode — it must be given with `/give`. It is intended for builders and map-makers who want true solid color panels.
+</Note>
+
+Using a **Glow Ink Sac** on a placed Solid Ceramic block enables its **LIT** state, making the surface emit a true glowing solid color with no texture detail visible.
+
+## Tinged Glass
+
+**Tinged Glass** is a dyeable colored glass variant added by the mod. It extends vanilla's `TransparentBlock` and reduces light passage to one-fifth of the maximum level (`getLightBlock` returns `maxLightLevel / 5`). Like other ceramic blocks it can be dyed in all 16 colors.
+
+## Creative tab placement
+
+Since 3.0.0, ceramic building blocks are also added to the vanilla **Colored Blocks** creative inventory tab alongside wool, concrete, and stained glass.

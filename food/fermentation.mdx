@@ -1,0 +1,203 @@
+---
+title: 'Fermentation: brew mead, cider, and wines'
+description: 'Use the Fermentation Vessel to brew mead, apple cider, elderberry wine, pickled vegetables, and more — all fermented from raw ingredients over time.'
+---
+
+The Fermentation Vessel is a craftable block that converts raw ingredients into fermented products over time. Mead, fruit wines, ciders, pickled vegetables, and other items can only be obtained through fermentation, making the vessel an essential part of advanced food production. The vessel also outputs a redstone comparator signal, enabling fully automated brewing farms.
+
+## How the Fermentation Vessel works
+
+<Steps>
+  <Step title="Fill with water">
+    Right-click the empty Fermentation Vessel with a water source to fill it. Accepted water sources include a **Water Bucket** (returns an empty Bucket), a **Water Bottle** (returns a Glass Bottle), or a **Water Cup** (returns a Cup). The vessel enters the `WATER` state.
+  </Step>
+
+  <Step title="Add the ingredient">
+    Right-click the water-filled vessel with a valid fermentation ingredient. The ingredient is consumed and fermentation begins. If the ingredient has a crafting remainder (such as a Glass Bottle), it is returned to your inventory. The vessel enters the `FERMENTING` state and colored bubble particles appear above it.
+  </Step>
+
+  <Step title="Wait for fermentation to complete">
+    The vessel ticks over time until the product is ready. A **comparator placed against the vessel** reads 1–15 based on fermentation progress; the signal reaches **15 when fermentation is complete**. You can monitor progress without opening any inventory screen.
+  </Step>
+
+  <Step title="Collect the product">
+    Right-click the vessel once fermentation is done to retrieve the finished product. The vessel returns to the `EMPTY` state, ready for a new batch.
+  </Step>
+</Steps>
+
+<Tip>
+  Place a comparator on the side of the Fermentation Vessel and wire it into a note block or indicator lamp. When the signal reaches 15, your brew is ready to collect.
+</Tip>
+
+## Fermented products
+
+<AccordionGroup>
+  <Accordion title="Mead Bottle">
+    **Ingredient:** Honey Bottle (returns a Glass Bottle)
+
+    Mead is a sweet alcoholic drink brewed from honey. It stacks to 16 and is always edible.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 5 |
+    | Saturation modifier | 0.4 |
+    | Effect | Regeneration I for 200 ticks (10 s) — guaranteed |
+    | Side effect | 30% chance of Nausea for 600 ticks (30 s) |
+    | Container | Returns a Glass Bottle |
+  </Accordion>
+
+  <Accordion title="Apple Cider Jar">
+    **Ingredient:** Apple
+
+    A mild cider fermented from ordinary apples. Stacks to 16 and returns a Cup when consumed.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 6 |
+    | Saturation modifier | 0.6 |
+    | Effects | None |
+    | Container | Returns a Cup |
+  </Accordion>
+
+  <Accordion title="Plum Cider Jar">
+    **Ingredient:** Plum (any item in `c:foods/plums`)
+
+    A deep-flavored cider from Bountiful Fares plums. Stacks to 16.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 6 |
+    | Saturation modifier | 0.6 |
+    | Effects | None |
+    | Container | Returns a Cup |
+  </Accordion>
+
+  <Accordion title="Hoary Cider Jar">
+    **Ingredient:** Hoary Apple
+
+    Brewed from the rare Hoary Apple found on Hoary Apple trees. Stacks to 16.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 6 |
+    | Saturation modifier | 0.6 |
+    | Effects | None |
+    | Container | Returns a Cup |
+  </Accordion>
+
+  <Accordion title="Elderberry Wine Bottle">
+    **Ingredient:** Elderberries
+
+    A rich wine fermented from elderberries. Provides an immediate burst of healing. Stacks to 16 and is always edible.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 4 |
+    | Saturation modifier | 0.2 |
+    | Effect | Instant Health II — guaranteed |
+    | Side effect | 30% chance of Nausea for 600 ticks (30 s) |
+    | Container | Returns a Glass Bottle |
+  </Accordion>
+
+  <Accordion title="Lapisberry Wine Bottle">
+    **Ingredient:** Lapisberries
+
+    A vivid blue wine fermented from lapisberries. Grants night vision for half a minute. Stacks to 16 and is always edible.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 5 |
+    | Saturation modifier | 0.4 |
+    | Effect | Night Vision for 600 ticks (30 s) — guaranteed |
+    | Side effect | 30% chance of Nausea for 600 ticks (30 s) |
+    | Container | Returns a Glass Bottle |
+  </Accordion>
+
+  <Accordion title="Coconut Milk Bottle">
+    **Ingredient:** Coconut Half (any item in `c:coconut_halves`)
+
+    Pressed coconut milk, useful as a food and as a crafting ingredient. Returns a Glass Bottle when consumed.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 3 |
+    | Saturation modifier | 1.0 |
+    | Effects | None |
+    | Container | Returns a Glass Bottle |
+  </Accordion>
+
+  <Accordion title="Pickled Beetroot">
+    **Ingredient:** Beetroot (yields 2 Pickled Beetroots)
+
+    A tangy preserved vegetable. Fast-eating and nutritious.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 5 |
+    | Saturation modifier | 0.8 |
+    | Effects | None |
+  </Accordion>
+
+  <Accordion title="Pickled Spongekin">
+    **Ingredient:** Spongekin Slice (yields 2 Pickled Spongekins)
+
+    A preserved sponge-based vegetable that is always edible and extends underwater air time by 200 ticks when eaten.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 5 |
+    | Saturation modifier | 0.8 |
+    | Effects | Extends air time underwater |
+  </Accordion>
+
+  <Accordion title="Citrus Essence">
+    **Ingredient:** Orange or Lemon (any item in `c:foods/oranges` or `c:foods/lemons`; yields 2 Citrus Essence)
+
+    A concentrated citrus extract. Always edible and grants a short burst of the Acidic effect. See the [Effects](/food/effects) page for details on how Acidic stacks.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 1 |
+    | Saturation modifier | 0.1 |
+    | Effect | Acidic I for 300 ticks (15 s) — guaranteed |
+  </Accordion>
+
+  <Accordion title="Foul Flesh">
+    **Ingredient:** Rotten Flesh
+
+    What happens when you ferment something that was already rotting. Technically edible, but strongly inadvisable outside of the "An Acquired Taste" advancement.
+
+    | Stat | Value |
+    |---|---|
+    | Nutrition | 0 |
+    | Saturation modifier | 0.0 |
+    | Effect | Hunger I for 300 ticks (15 s) — guaranteed |
+
+    <Warning>
+      Eating Foul Flesh applies Hunger I and removes 2 hunger shanks from your food bar. It is always edible, so you can eat it even on a full stomach — but there is no benefit to doing so outside of advancement hunting.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Maple Mead Bottle (NeoForge — No Man's Land compat)">
+    **Ingredient:** Maple Syrup Bottle (from the No Man's Land mod)
+
+    This recipe is only available on NeoForge when No Man's Land is installed. Maple Mead removes Hunger, Weakness, and Slowness on consumption, making it a convenient on-the-go cleanse.
+  </Accordion>
+</AccordionGroup>
+
+## Quick reference
+
+| Product | Ingredient | Yield | Notable effect |
+|---|---|---|---|
+| Mead Bottle | Honey Bottle | 1 | Regeneration I (10 s) |
+| Apple Cider Jar | Apple | 1 | — |
+| Plum Cider Jar | Plum | 1 | — |
+| Hoary Cider Jar | Hoary Apple | 1 | — |
+| Elderberry Wine Bottle | Elderberries | 1 | Instant Health II |
+| Lapisberry Wine Bottle | Lapisberries | 1 | Night Vision (30 s) |
+| Coconut Milk Bottle | Coconut Half | 1 | — |
+| Pickled Beetroot | Beetroot | 2 | — |
+| Pickled Spongekin | Spongekin Slice | 2 | Extends air time |
+| Citrus Essence | Orange or Lemon | 2 | Acidic I (15 s) |
+| Foul Flesh | Rotten Flesh | 1 | Hunger I (15 s) |
+| Maple Mead Bottle | Maple Syrup Bottle | 1 | Removes debuffs (NeoForge) |

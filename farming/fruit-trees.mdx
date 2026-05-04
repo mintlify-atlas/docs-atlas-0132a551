@@ -1,0 +1,101 @@
+---
+title: "Fruit trees: apples, citrus, plums, and coconuts"
+description: "Bountiful Fares adds apple, orange, lemon, plum, coconut, hoary, and golden apple trees that produce hanging fruit you harvest by right-clicking the leaves."
+---
+
+Bountiful Fares introduces several fruit trees that generate naturally in the world. Their leaves periodically grow hanging fruit blocks beneath them, which you can harvest by right-clicking without disturbing the leaves themselves. Each tree also brings its own wood type with a full set of wooden blocks.
+
+## Types of fruit trees
+
+<CardGroup cols={2}>
+  <Card title="Apple tree" icon="tree" href="/farming/fruit-trees#apple">
+    Grows Hanging Apples. Vanilla apple trees are replaced with this richer variant. Apple Saplings grow from apples.
+  </Card>
+  <Card title="Orange tree" icon="sun" href="/farming/fruit-trees#citrus">
+    Grows Hanging Oranges. Generates in warm biomes. Yields Oranges.
+  </Card>
+  <Card title="Lemon tree" icon="lemon" href="/farming/fruit-trees#citrus">
+    Grows Hanging Lemons. Generates in warm biomes. Yields Lemons.
+  </Card>
+  <Card title="Plum tree" icon="tree" href="/farming/fruit-trees#plum">
+    Grows Hanging Plums. Generates in temperate biomes. Yields Plums.
+  </Card>
+  <Card title="Palm tree (coconut)" icon="umbrella-beach" href="/farming/fruit-trees#palm">
+    Grows Coconuts. Found in warm and tropical biomes. Yields Coconut Halves and Coconut Coir.
+  </Card>
+  <Card title="Hoary Apple tree" icon="seedling" href="/farming/fruit-trees#hoary-apple">
+    An ancient tree revived by the Sniffer. Yields Hoary Apples, a nutrient-rich food with the Enrichment effect.
+  </Card>
+  <Card title="Golden Apple tree" icon="star" href="/farming/fruit-trees#golden-apple">
+    Extremely rare. Found only hidden inside Woodland Mansions. Grows in darkness.
+  </Card>
+</CardGroup>
+
+## How fruit trees work
+
+Fruit tree leaves are a special `FruitLeavesBlock` that extends vanilla leaves with a bonus: when the block below the leaves is air, they can grow a hanging fruit block underneath. Bone Meal can be applied to ripe fruit-bearing leaves to immediately spawn a hanging fruit below.
+
+<Steps>
+  <Step title="Obtain a sapling">
+    Most fruit saplings are obtained by breaking the corresponding leaves, just like vanilla saplings. Coconut Saplings are planted by placing a **Coconut** item. Hoary Apple Saplings are grown from **Hoary Seeds**, which are found as ancient seeds from the Sniffer.
+  </Step>
+  <Step title="Grow the tree">
+    Plant the sapling on dirt or grass in a suitable location and wait for it to grow, or use Bone Meal to speed it up.
+  </Step>
+  <Step title="Harvest hanging fruit">
+    Once leaves have generated a hanging fruit block below them, **right-click** the hanging fruit to harvest it. The fruit block disappears and the item drops directly into your inventory. The leaves are not damaged. You can also apply Bone Meal to fruit leaves to instantly spawn a hanging fruit below.
+  </Step>
+</Steps>
+
+<Note>
+Hanging fruit blocks also function as falling blocks. If the leaves above are removed, the fruit block will fall and break. Hitting a hanging fruit with a projectile shatters it and drops items based on how much of the fruit had already been eaten.
+</Note>
+
+## Fruit types and food values
+
+Food values are expressed as half-shanks of hunger restored (`nutrition`) and the saturation modifier used to calculate saturation gain.
+
+| Fruit | Nutrition | Saturation modifier | Notes |
+|---|---|---|---|
+| Apple (vanilla) | 4 | 0.3 | Standard apple |
+| Orange | 4 | 0.3 | From Orange or Lemon trees |
+| Lemon | 4 | 0.3 | Citrus fruit |
+| Plum | 4 | 0.3 | From Plum trees |
+| Hoary Apple | 4 | 0.6 | Higher saturation; grants Enrichment when used in compote |
+| Coconut Half | 4 | 0.1 | Low saturation; two halves per coconut |
+
+<Tip>
+Fruit can be processed into compote jars (nutrition 6, saturation 0.4, grants Enrichment) or pies. Citrus fruits can also be candied or juiced into Citrus Essence.
+</Tip>
+
+## Palm trees and coconuts
+
+Palm trees are a unique variant that behave differently from other fruit trees. Instead of leaves, they have a **Palm Crown** at the top and **Palm Fronds** on the sides.
+
+- Coconuts grow directly on the palm trunk beneath the crown.
+- Breaking a **Coconut** block drops two **Coconut Halves** and some **Coconut Coir**.
+- Placing a **Coconut** item in the world plants a **Palm Sapling**.
+- Coconut Coir is a crafting material used for coir blocks, carpets, bricks, and a Coir Bed.
+
+## Hoary Apple trees
+
+Hoary Apple trees are ancient trees recovered through Sniffer archaeology.
+
+- The Sniffer can dig up **Hoary Seeds** from ancient dirt.
+- Planting Hoary Seeds on farmland grows a **Hoary Apple Sapling Crop**, which eventually matures into a Hoary Apple Sapling you can harvest and plant.
+- Hoary Apple trees produce **Hoary Apples** (nutrition 4, saturation modifier 0.6).
+- Hoary wood has a distinctive grey tone and includes a full set of wooden blocks, signs, and boats.
+
+## Golden Apple trees
+
+Golden Apple trees are among the rarest finds in the mod.
+
+- Golden Apple Saplings are hidden inside the walls of **Woodland Mansions**. The advancement "Money Does Grow On Trees!" tracks finding one.
+- Golden Apple Saplings emit a faint ambient sound, hinting at their presence in nearby walls.
+- These saplings only grow in **dark environments** (the advancement "Golden Thumb" tracks cultivating one and harvesting its fruit).
+- Hanging Golden Apples emit a soft glow (light level 7).
+- Golden Apple leaves and logs have an uncommon rarity tint; the sapling item itself has epic rarity.
+
+<Warning>
+Golden Apple Saplings no longer break instantly as of version 3.0.0 — they now require a tool to break, preventing accidental loss.
+</Warning>
